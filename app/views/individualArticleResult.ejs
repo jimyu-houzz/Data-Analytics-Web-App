@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+   <meta charset="utf-8">
+   <title>Individual Article Result</title>
+   <link rel="stylesheet" href="/css/style.css" />
+   <script type="text/javascript" src="/js/individual.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    var articleTitle = <%- JSON.stringify(allResult.articleBarChart) %>;
+    var articleBarChart = <%- JSON.stringify(allResult.articleBarChart) %>;
+    var articlePieChart = <%- JSON.stringify(allResult.articlePieChart) %>;
+    var articleAdminType = <%- JSON.stringify(allResult.articleAdminType) %>;
+  </script>
+
+  <p>Title : <span class="result"><%= allResult.individualTitle %></span></p>
+  <p>Message : <span class="result"><%= allResult.updateMsg %></span></p>
+  <p>Number of revisions : <span class="result"><%= allResult.articleRevNumber %></span></p>
+  <p>Top 5 regular users :
+    <span class="result">
+    <% if (locals.allResult.top5users) {for(var i=0; i < allResult.top5users.length; i++) { %>
+        <%= allResult.top5users[i] %>,
+    <% }} %>
+  </span>
+  </p>
+
+  <div class="slidemenu2">
+
+    <!-- Item 3 -->
+    <input type="radio" name="slideItem2" id="slide-item-3" class="slide-toggle" checked />
+    <label for="slide-item-3">
+      <i class="fas fa-chart-bar fa-2x graphicon"></i><span>Bar Chart #1</span>
+    </label>
+    <!-- Item 4 -->
+    <input type="radio" name="slideItem2" id="slide-item-4" class="slide-toggle" />
+    <label for="slide-item-4">
+      <i class="fas fa-chart-pie fa-2x graphicon"></i><span>Pie Chart</span>
+    </label>
+    <!-- Item 5 -->
+    <input type="radio" name="slideItem2" id="slide-item-5" class="slide-toggle" />
+    <label for="slide-item-5">
+      <i class="fas fa-chart-bar fa-2x graphicon"></i><span>Bar Chart #2</span>
+    </label>
+    <div class="clear"></div>
+    <!-- Bar -->
+    <div class="slider">
+      <div class="bar2"></div>
+    </div>
+
+  </div>
+
+  <div id="articleBarChartSec"></div>
+  <div id="articlePieChartSec"></div>
+  <div id="articleBarChartSec2" style="display:none">
+
+    <div class="col1">
+      <div id="topusererror"></div>
+      <label>Choose a user or multiple users</label>
+      <select class="multiselect" id="selectUser" name="user" multiple>
+        <% for(var i = 0; i < allResult.top5users.length;i++){ %>
+        <option value="<%=allResult.top5users[i]%>"><%=allResult.top5users[i]%></option>
+        <% } %>
+      </select>
+    </div>
+
+    <div class="col2">
+      <div class="select-style yearrange">
+        <select id="selectMinYear" name="minyear">
+          <option>From</option>
+          <% for(var i = 0; i < allResult.articleYearList.length;i++){ %>
+          <option value="<%=allResult.articleYearList[i]._id%>"><%=allResult.articleYearList[i]._id%></option>
+          <% } %>
+        </select>
+        <i class="fa fa-caret-down graphicon" aria-hidden="true"></i>
+      </div>
+
+      <div class="select-style yearrange">
+        <select id="selectMaxYear" name="maxyear">
+          <option>To</option>
+          <% for(var i = 0; i < allResult.articleYearList.length;i++){ %>
+          <option value="<%=allResult.articleYearList[i]._id%>"><%=allResult.articleYearList[i]._id%></option>
+          <% } %>
+        </select>
+        <i class="fa fa-caret-down graphicon" aria-hidden="true"></i>
+      </div>
+
+      <input class="select-btn" id="selectUserYrSubmit" type="submit" value="Submit">
+    </div>
+
+
+    <div id="individualTitleTop5BarChart"></div>
+    <!--<div id="articleBarChartTop5Sec"></div>-->
+  </div>
+
+</body>
+</html>

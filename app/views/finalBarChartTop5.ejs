@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+   <meta charset="utf-8">
+   <title>Individual Article Bar Chart Result</title>
+   <link rel="stylesheet" href="/css/style.css" />
+   <script type="text/javascript" src="/js/articletop5.js"></script>
+</head>
+<body>
+  <script type="text/javascript">
+    var articleBarChartTop5 = <%- JSON.stringify(allResult.articleBarChartTop5) %>;
+    var usersArray = <%- JSON.stringify(allResult.usersArray) %>;
+    //console.log(articleBarChartTop5);
+  </script>
+
+<p id="top5error"><%=allResult.top5error%></p>
+<div id="articleBarChartTop5Section"></div>
+
+</body>
+</html>

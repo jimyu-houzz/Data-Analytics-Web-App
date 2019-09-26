@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+   <meta charset="utf-8">
+   <title>Highest Number of Revisions</title>
+   <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <p>Titles of <%= allResult.numberOfArticle %> articles with highest number of revisions :
+    <div class="result">&#8594;
+    <% if (locals.allResult.mostNumRev) {for(var i=0; i < allResult.mostNumRev.length; i++) { %>
+        <%= allResult.mostNumRev[i] %>,
+    <% }} %>
+  </div>
+  </p>
+  <p>Titles of <%= allResult.numberOfArticle %> articles with lowest number of revisions :
+    <div class="result">&#8594;
+    <% if (locals.allResult.leastNumRev) {for(var i=0; i < allResult.leastNumRev.length; i++) { %>
+        <%= allResult.leastNumRev[i] %>,
+    <% }} %>
+  </div>
+  </p>
+
+</body>
+</html>

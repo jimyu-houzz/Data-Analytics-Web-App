@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+   <meta charset="utf-8">
+   <title>Author Analytics Result</title>
+   <link rel="stylesheet" href="/css/style.css" />
+   <script type="text/javascript" src="/js/author.js"></script>
+</head>
+<body>
+  <div class="subSection">
+    <div id="authorerror"><%= allResult.authorErrorMsg %></div>
+    <table id="author-table">
+      <thead>
+        <tr>
+          <th>Article's Title</th>
+          <th>Number of Revisions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (locals.allResult.authorAnalytics) {for(var i=0; i < allResult.authorAnalytics.length; i++) { %>
+        <tr>
+          <td><%= allResult.authorAnalytics[i]._id %></td>
+          <td><%= allResult.authorAnalytics[i].numbOfRev %></td>
+        </tr>
+        <% }} %>
+      </tbody>
+
+    </table>
+  </div>
+
+  <div class="subSection timestampsection">
+    <label id="timestamplabel">Check Revisions' Timestamps</label><br>
+    <div class="select-style">
+      <select id="selectAuthorArticle" name="authorarticle">
+        <option>Choose an Article</option>
+        <% for(var i = 0; i < allResult.authorAnalytics.length;i++){ %>
+        <option value="<%=allResult.authorAnalytics[i]._id%>"><%=allResult.authorAnalytics[i]._id%></option>
+        <% } %>
+      </select>
+      <i class="fa fa-caret-down graphicon" aria-hidden="true"></i>
+    </div>
+    <input class="select-btn" id="selectAuthorArticleSubmit" type="submit" value="Submit">
+
+    <div id="timestampResult"></div>
+  </div>
+
+</body>
+</html>

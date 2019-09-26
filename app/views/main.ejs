@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="utf-8">
+  <title>COMP5347 Group Project 6</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/solid.css" integrity="sha384-ioUrHig76ITq4aEJ67dHzTvqjsAP/7IzgwE7lgJcg2r7BRNGYSK0LwSmROzYtgzs" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/fontawesome.css" integrity="sha384-sri+NftO+0hcisDKgr287Y/1LVnInHJ1l+XC7+FOabmTTIK0HnE2ID+xxvJ21c5J" crossorigin="anonymous">
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="/js/main.js"></script>
+
+</head>
+
+<body id="main">
+  <script type="text/javascript">
+    var overallBarChart = <%- JSON.stringify(allResult.overallBarChart) %>;
+    var overallPieChart = <%- JSON.stringify(allResult.overallPieChart) %>;
+    var overallRevAdminType = <%- JSON.stringify(allResult.overallRevAdminType) %>;
+  </script>
+
+  <div class="container">
+    <div id="contentLeft">
+      <ul id="leftNavigation">
+        <li id="welcomeSec">Welcome,<br> <%= allResult.email%><br><i class="fas fa-smile fa-3x smileicon"></i></li>
+        <li id="overallMenu"> <a href="#"><i class="fas fa-chart-bar leftNavIcon"></i> Overall Analytics </a></li>
+        <li id="individualMenu"> <a href="#"><i class="fas fa-newspaper leftNavIcon"></i> Individual Analytics </a></li>
+        <li id="authorMenu"> <a href="#"><i class="fas fa-user-edit leftNavIcon"></i> Author Analytics </a></li>
+        <li id="logout"> <a href="#"><span style="margin-left: 40px;"> LOGOUT </span></a></li>
+      </ul>
+    </div>
+
+    <div id="contentRight">
+      <div id="overallSection">
+        <h2>Overall Analytics</h2>
+        <div id="numbererror"></div>
+        <div class="subSection">
+          <div class="wrap">
+            <div class="search">
+              <input class="searchTerm" id="number" type="text" name="title" placeholder="Number of Article">
+              <button class="searchButton" id="numOfArticleSubmit" type="submit">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+
+          <div id="numHighLowResult">
+            <p>Titles of 2 articles with highest number of revisions :<div class="result">&#8594; <%= allResult.mostNumRev1%>, <%= allResult.mostNumRev2%></div></p>
+            <p>Titles of 2 articles with lowest number of revisions : <div class="result">&#8594; <%= allResult.leastNumRev1%>, <%= allResult.leastNumRev2%></div></p>
+          </div>
+        </div>
+
+        <div class="subSection">
+          <p>The article edited by largest group of registered users : <div class="result">&#8594; <%= allResult.largestRegUserRev%></div></p>
+          <p>The article edited by smallest group of registered users : <div class="result">&#8594; <%= allResult.smallestRegUserRev%></div></p>
+        </div>
+
+        <div class="subSection">
+          <p>The top 2 articles with the longest history (measured by age) : <div class="result">&#8594; <%= allResult.longestHistory1%>, <%= allResult.longestHistory2%></div></p>
+          <p>Article with the shortest history (measured by age) : <div class="result">&#8594; <%= allResult.youngestHistory%></div></p>
+        </div>
+
+        <div class="subSection">
+          <div class="slidemenu">
+            <!-- Item 1 -->
+            <input type="radio" name="slideItem" id="slide-item-1" class="slide-toggle" checked />
+            <label for="slide-item-1">
+              <i class="fas fa-chart-bar fa-2x graphicon"></i><span>Bar Chart</span>
+            </label>
+            <!-- Item 2 -->
+            <input type="radio" name="slideItem" id="slide-item-2" class="slide-toggle" />
+            <label for="slide-item-2">
+              <i class="fas fa-chart-pie fa-2x graphicon"></i><span>Pie Chart</span>
+            </label>
+            <div class="clear"></div>
+            <!-- Bar -->
+            <div class="slider">
+              <div class="bar"></div>
+            </div>
+          </div>
+          <div class="graphwrapper">
+            <div id="overallBarChartSec"></div>
+            <div id="overallPieChartSec"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="individualSection" style="<%=allResult.individualdisplay%>">
+        <h2>Individual Article Analytics</h2>
+        <div class="select-style">
+          <select id="selectArticle" name="article">
+            <option>Choose an Article</option>
+            <% for(var i = 0; i < allResult.articleDropDownList.length;i++){ %>
+            <option value="<%=allResult.articleDropDownList[i]%>"><%=allResult.articleDropDownList[i]%></option>
+            <% } %>
+          </select>
+          <i class="fa fa-caret-down graphicon" aria-hidden="true"></i>
+        </div>
+        <input class="select-btn" id="selectArticleSubmit" type="submit" value="Select">
+
+        <div id="individualTitle">
+          <input id="selectUserYrSubmit" type="submit" value="Submit" style="display:none;">
+          <p id="errormsg" style="display:none;"></p>
+        </div>
+        <div id="individualTitleTop5BarChart"></div>
+      </div>
+
+
+      <div id="authorSection" style="<%=allResult.authordisplay%>">
+        <h2>Author Analytics</h2>
+        <div class="wrap">
+          <div class="search">
+            <input class="searchTerm" id="selectAuthor" type="text" placeholder="Author's name">
+            <button class="searchButton" id="selectAuthorSubmit" type="submit" value="Submit">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+
+        <div id="authorAnalyticsResult">
+          <input id="selectAuthorArticleSubmit" type="submit" value="Submit" style="display:none;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

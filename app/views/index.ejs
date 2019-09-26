@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+   <meta charset="utf-8">
+   <title>COMP5347 Group Project 6</title>
+   <link rel="stylesheet" href="/css/style.css" />
+   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+   <script type="text/javascript" src="/js/index.js"></script>
+
+
+</head>
+<body id="index">
+  <div id="loginform" class="loginform form" style="<%=logindisplay%>">
+    <form method="POST" action="main">
+      <p id="loginerrorresult"><%=allResult.loginerrormsg%></p>
+      <input type="email" id="loginemail" name="loginemail" class="loginrequired" placeholder="Email"><br>
+      <input type="password" id="loginpassword" name="loginpassword" class="loginrequired" placeholder="Password"><br>
+      <input name="formtype" value="login" style="display:none">
+      <input class="submit-btn" type="submit" value="LOGIN">
+      <p id="registerlink" onclick="register()"><span style="color:#515151">Or new user?</span> Create new Account</p><br><br>
+    </form>
+  </div>
+
+
+  <div id="registrationform" class="registrationform form" style="<%=registrationdisplay%>">
+    <form method="POST" action="main">
+      <p id="errorresult"><%=allResult.errormsg%></p>
+      <input type="email" id="email" name="email" class="required" value="<%=allResult.inputemail%>" placeholder="Email"><br>
+      <input type="password" id="password" name="password" class="required" placeholder="Password"><br>
+      <input type="password" id="repassword" name="repassword" class="required" placeholder="Re-password"><br>
+      <input type="text" id="firstname" name="firstname" class="required" value="<%=allResult.inputfirstname%>" placeholder="First Name"><br>
+      <input type="text" id="lastname" name="lastname" class="required" value="<%=allResult.inputlastname%>" placeholder="Last Name"><br>
+      <input name="formtype" value="registration" style="display:none">
+      <input class="submit-btn" type="submit" value="REGISTER">
+      <button id="loginlink" type="button" onclick="login()">&#8592; Back to Login</button><br>
+    </form>
+  </div>
+</body>
+</html>

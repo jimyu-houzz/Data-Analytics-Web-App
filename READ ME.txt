@@ -1,0 +1,11 @@
+Before running the server, do the following
+1) Run 'npm install' on root directory
+2) Move 'dataset' folder in /app/import/
+** Note that if the 'dataset' directory name is changed, the path in importJSON.js and update.js, and app/controllers/analytics.server.controller.js will also needed to be changed.
+** The JSON files should be located in dataset/revisions
+** The admin_.txt and bot.txt should be located in dataset/
+3) On terminal, cd to /app/import/
+4) Run 'node importJSON'
+5) Run 'node update'. After the update for all 8 user types have been completed, force end the execution (^C).
+5) cd back to root directory
+6) Run 'node server' or 'npm start'

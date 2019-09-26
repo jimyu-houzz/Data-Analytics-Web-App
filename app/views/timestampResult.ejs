@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+   <meta charset="utf-8">
+   <title>Timestamps Result</title>
+   <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <table id="timestamp-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Timestamps</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (locals.allResult.timestampResult) {for(var i=0; i < allResult.timestampResult.length; i++) { %>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= allResult.timestampResult[i].timestamp %></td>
+        </tr>
+      <% }} %>
+    </tbody>
+
+  </table>
+
+</body>
+</html>
