@@ -13,7 +13,9 @@ var allAdmin = admin_active.concat(admin_former, admin_inactive, admin_semi_acti
 var allRegisteredUser = allAdmin.concat(bot);
 //console.log(allRegisteredUser);
 
-mongoose.connect('mongodb://localhost/wikidata',function () {
+mongoose.connect('mongodb://localhost/wikidata', 
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  function () {
 	  console.log('mongodb connected to wikidata!')
 	});
 
@@ -37,7 +39,7 @@ Revision.update(
   {$set:{usertype:'admin',registered:true}},
   {multi: true, upsert:true},
   function(err,result){
-  if (err){console.log("ERROR")}
+  if (err){console.log("ERROR", err)}
   else{
     console.log('admin usertype has been updated/inserted');
     console.log(result);
@@ -50,7 +52,7 @@ Revision.update(
   {$set:{admintype:'active'}},
   {multi: true, upsert:true},
   function(err,result){
-  if (err){console.log("ERROR")}
+  if (err){console.log("ERROR", err)}
   else{
     console.log('admin_active admintype has been updated/inserted');
     console.log(result);
