@@ -1,11 +1,12 @@
-# Data-Analytics-Web-App
+# Data-Analytics-Web-App  
 This is a full-stack web app to analyze data from wikipedia revisioins. Data is analyzied based on articles and authors, simple visualization is also provided.
-The web app uses plain HTML and bootstrap, MVC framework, node.js and mongodb.
+The web app uses plain HTML and bootstrap, MVC framework, node.js and mongodb.  
+<br>
 <img src="./public/images/screenshot_landing_page.png" width="900" alt="landing page">
 
 <br>
 <br>
-## To run app: ##  
+## To run app: 
 
 1) Have Mongodb installed, create a database named `wikidata`   
 Screenshot is provided using Robo3T:  
