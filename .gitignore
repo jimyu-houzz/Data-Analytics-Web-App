@@ -1,4 +1,3 @@
 node_modules
-app/import/dataset/revisions/
 app/import/package-lock.json
 .DS_Store
