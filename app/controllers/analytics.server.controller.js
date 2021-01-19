@@ -28,7 +28,7 @@ module.exports.logout = function(req, res) {
 module.exports.loginRegister = function(req, res) {
   console.log("loginRegister is ran!");
   var body = req.body;
-  sess = req.session;
+  var sess = req.session;
   console.log(sess);
 
   //If login form is posted
@@ -136,6 +136,8 @@ function getMain(req, res){
   Revision.findMostNumRev(2, function(err, result){
     if(err){console.log(err);}
     else{
+      console.log('result', result);
+      
       allResult.mostNumRev1 = result[0]._id;
       allResult.mostNumRev2 = result[1]._id;
       count++;
