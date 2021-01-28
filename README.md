@@ -1,6 +1,7 @@
 # Data-Analytics-Web-App  
 This is a full-stack web app to analyze data from wikipedia revisioins. Data is analyzied based on articles and authors, simple visualization is also provided.
-The web app uses plain HTML and bootstrap, MVC framework, node.js and mongodb.  
+<br />
+The web app uses html, node.js with express and ejs(embedded javascript templates), mongodb and MVC framework.  
 <br/>
 <img src="./public/images/screenshot_landing_page.png" width="900" alt="landing page">
 <br/>
