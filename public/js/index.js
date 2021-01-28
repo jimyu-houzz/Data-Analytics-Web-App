@@ -22,56 +22,42 @@ function isBlank(inputField){
 }
 
 //Validate Email
-function validateEmail(email){
-  var email = document.getElementById(email);
-  var emailregex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if(email.value.match(emailregex)){
-    return true;
-  }
-  else{
-    return false;
-  }
+function validateEmail(emailId){
+  const email = document.getElementById(emailId);
+  const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  
+  return email.value.match(emailRegex);
 }
 
 //Validate for strong password: must have at least 8 characters, contain at least 1 upper and 1 lower case letter and 1 number
 function validatePassword(){
   var password = document.getElementById("password");
-  var pwregex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-  if(password.value.match(pwregex)){
-    return true;
-  }
-  else{
-    return false;
-  }
+  var pwRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+  
+  return password.value.match(pwRegex);
 }
 
 //check if password match
 function passwordMatch(){
-  var password = document.getElementById("password");
-  var repassword = document.getElementById("repassword");
-  if(password.value == repassword.value){
-    return true;
-  }
-  else{
-    return false;
-  }
+  const password = document.getElementById("password");
+  const repassword = document.getElementById("repassword");
+  
+  return password.value === repassword.value;
 }
 
-//check if name contains special character
+// check if name contains special character
 function checkName(){
-  var firstname = document.getElementById("firstname");
-  var lastname = document.getElementById("lastname");
-  //letter only and should be between 2-30 characters
-  var letteronlyreg = /^[a-zA-Z ]{2,30}$/;
-  if(!firstname.value.match(letteronlyreg)){
+  const firstName = document.getElementById("firstname");
+  const lastName = document.getElementById("lastname");
+  // letter only and should be between 2-30 characters
+  const letterOnlyReg = /^[a-zA-Z ]{2,30}$/;
+  if(!firstName.value.match(letterOnlyReg)) {
     errorresult.innerHTML = "Invalid First name. First Name must not contain any special character or number and should be from 2-30 characters.";
     return false;
-  }
-  else if(!lastname.value.match(letteronlyreg)){
+  } else if(!lastName.value.match(letterOnlyReg)) {
     errorresult.innerHTML = "Invalid Last name. Last Name must not contain any special character or number and should be from 2-30 characters.";
     return false;
-  }
-  else{
+  } else {
     return true;
   }
 }
@@ -108,7 +94,7 @@ $(document).ready(function(){
   //When login form is submitted
   loginform.onsubmit = function(e){
     console.log("Login submitted on frontend");
-    for (var i=0; i < loginRequiredInputs.length; i++){
+    for (let i=0; i<loginRequiredInputs.length; i++){
       if(isBlank(loginRequiredInputs[i])){
         e.preventDefault();
         loginerrorresult.innerHTML = "Please input all the required fields";
@@ -130,21 +116,18 @@ $(document).ready(function(){
   //When registration form is submitted
   registrationform.onsubmit = function(e){
     //var requiredInputs = document.querySelectorAll(".required");
-    for (var i=0; i < requiredInputs.length; i++){
+    for (let i=0; i<requiredInputs.length; i++){
       if(isBlank(requiredInputs[i])){
         e.preventDefault();
         errorresult.innerHTML = "Please input all the required fields";
-      }
       //if not pass validation
-      else if(!runValidation()){
+      } else if(!runValidation()){
         e.preventDefault();
-      }
-	    else{
+      } else{
         errorresult.innerHTML = "";
         //errorresult.style.color = "#4e9947";
         console.log("pass!");
 	    }
     }
   }
-
 });
