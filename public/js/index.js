@@ -94,23 +94,21 @@ $(document).ready(function(){
   //When login form is submitted
   loginform.onsubmit = function(e){
     console.log("Login submitted on frontend");
-    for (let i=0; i<loginRequiredInputs.length; i++){
-      if(isBlank(loginRequiredInputs[i])){
+    for (let input of loginRequiredInputs){
+      if(input.value === ""){
         e.preventDefault();
         loginerrorresult.innerHTML = "Please input all the required fields";
+        return;
       }
-      else if(!validateEmail("loginemail")){
-        e.preventDefault();
-        loginerrorresult.innerHTML = "Invalid email. Please input email in the correct format.";
-        return false;
-      }
-	    else{
-        loginerrorresult.innerHTML = "";
-        //loginerrorresult.style.color = "#4e9947";
-        console.log("pass!");
-	    }
     }
-
+    if(!validateEmail("loginemail")){
+      e.preventDefault();
+      loginerrorresult.innerHTML = "Invalid email. Please input email in the correct format.";
+      return false;
+    }
+    loginerrorresult.innerHTML = "";
+    //loginerrorresult.style.color = "#4e9947";
+    console.log("pass!");
   }
 
   //When registration form is submitted
