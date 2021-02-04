@@ -58,12 +58,12 @@ RevisionSchema.statics.findSmallestRegisteredUsers = function(callback){
 	var query = [
 		{$match:
 			{anon:{$exists:false},
-    	registered:{$exists:true}
+    		registered:{$exists:true}
 		}},
 		{$group:{_id:{title:"$title",user:"$user"}}},
 		{$group:{_id:"$_id.title",count:{$sum:1}}},
 		{$sort:{count:1}},
-  	{$limit:1}
+  	{$limit:2}
 	]
 	return this.aggregate(query)
 	.exec(callback)

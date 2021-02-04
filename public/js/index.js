@@ -14,10 +14,10 @@ function login(){
 //function to determine if a field is blank
 function isBlank(inputField){
   if(inputField.type=="checkbox"){
-	   if(inputField.checked){return false;}
-	    return true;
-    }
-    if (inputField.value==""){return true;}
+	  if(inputField.checked){return false;}
+	  return true;
+  }
+  if (inputField.value==""){return true;}
   return false;
 }
 

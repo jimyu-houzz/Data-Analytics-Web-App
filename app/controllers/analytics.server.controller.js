@@ -165,12 +165,13 @@ function getMain(req, res){
       parseAllResult(allResult, res, count, 'main.ejs');
     }
   });
-
+//***** Should change revisions back to limit 2 and figure out whats wrong with the dataset ***** */
   //Find an article that are revised by smallest group of registered users
   Revision.findSmallestRegisteredUsers(function(err, result){
     if(err){console.log(err);}
     else{
-      allResult.smallestRegUserRev = result[0]._id;
+      console.log('do we have smaller group?', result);
+      allResult.smallestRegUserRev = result[1]._id;
       count++;
       parseAllResult(allResult, res, count, 'main.ejs');
     }
