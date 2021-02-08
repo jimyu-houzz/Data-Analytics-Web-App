@@ -180,7 +180,7 @@ function getMain(req, res){
   //Find an article with the oldest age
   Revision.findLongestHistory(function(err, result){
     if(err){console.log(err);}
-    else{
+    else {
       allResult.longestHistory1 = result[0]._id;
       allResult.longestHistory2 = result[1]._id;
       count++;
@@ -243,7 +243,7 @@ function getMain(req, res){
 function parseAllResult(allResult, res, count, viewfile){
   console.log(count);
   if(count < 10){return;}
-  else{
+  else {
     allResult.individualdisplay = nodisplay;
     allResult.authordisplay = nodisplay;
     res.render(viewfile, {allResult: allResult});
